@@ -1,12 +1,5 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:storybook/recommended",
-    "prettier",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
-  ],
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript", "prettier"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
