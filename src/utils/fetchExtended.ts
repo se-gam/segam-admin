@@ -34,4 +34,4 @@ const fetchExtended = returnFetchJson({
   }),
 });
 
-export default { fetchExtended };
+export default fetchExtended;
