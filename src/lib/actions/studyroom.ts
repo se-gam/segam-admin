@@ -2,11 +2,14 @@
 
 import fetchExtended from '@/utils/fetchExtended';
 import encryptPassword from '@/utils/encryptPassword';
+import { Studyroom } from '../definitions';
 
 const adminApiKey = encryptPassword(process.env.ADMIN_API_KEY!.toString());
 
 export default async function getStudyrooms() {
-  const { body } = await fetchExtended('/v1/studyroom/info/all', {
+  const {
+    body: { studyrooms },
+  } = await fetchExtended<Studyroom>('/v1/studyroom/info/all', {
     headers: {
       'admin-api-key': adminApiKey,
     },
@@ -16,5 +19,5 @@ export default async function getStudyrooms() {
     },
   });
 
-  return body;
+  return studyrooms;
 }
