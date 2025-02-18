@@ -1,18 +1,13 @@
 'use server';
 
-import fetchExtended from '@/utils/fetchExtended';
-import encryptPassword from '@/utils/encryptPassword';
+import { adminFetchExtended } from '@/utils/fetchExtended';
+import { revalidateTag } from 'next/cache';
 import { Studyroom } from '../definitions';
 
-const adminApiKey = encryptPassword(process.env.ADMIN_API_KEY!.toString());
-
-export default async function getStudyrooms() {
+export async function getStudyrooms() {
   const {
     body: { studyrooms },
-  } = await fetchExtended<Studyroom>('/v1/studyroom/info/all', {
-    headers: {
-      'admin-api-key': adminApiKey,
-    },
+  } = await adminFetchExtended<Studyroom>('/v1/studyroom/info/all', {
     cache: 'force-cache',
     next: {
       tags: ['studyrooms'],
@@ -20,4 +15,14 @@ export default async function getStudyrooms() {
   });
 
   return studyrooms;
+}
+
+export async function patchStudyroom(id: number, isActive: boolean) {
+  await adminFetchExtended(`/v1/studyroom/info/${id}`, {
+    method: 'PATCH',
+    body: {
+      isActive,
+    },
+  });
+  revalidateTag('studyrooms');
 }

@@ -1,5 +1,5 @@
 import StudyroomTable from '@/components/studyroom/studyroomTable';
-import getStudyrooms from '@/lib/actions/studyroom';
+import { getStudyrooms } from '@/lib/actions/studyroom';
 
 export default async function StudyroomDashBoard() {
   const studyrooms = await getStudyrooms();
