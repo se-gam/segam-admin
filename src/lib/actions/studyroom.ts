@@ -14,7 +14,7 @@ export async function getStudyrooms() {
     },
   });
 
-  return studyrooms;
+  return studyrooms.sort((a, b) => a.id - b.id);
 }
 
 export async function patchStudyroom(id: number, isActive: boolean) {

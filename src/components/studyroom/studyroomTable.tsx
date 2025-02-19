@@ -9,9 +9,6 @@ import { useState } from 'react';
 
 function StudyRoomTable({ studyrooms: initialStudyrooms }: { studyrooms: StudyroomDetail[] }) {
   const [studyrooms, setStudyrooms] = useState(initialStudyrooms);
-  // optimistic update를 진행하면서 기존 정렬값이 그대로 state에 있으니 새로고침전에는 바뀌지 않는다
-  // 하지만 toggle값을 한번이라도 변경한다음 새로고침을 하면 백엔드에서 정렬순서가 바뀌면서 revalidateTag가 작동되기 때문에 정렬순서가 변경된다.
-
   const [loadingId, setLoadingId] = useState<number | null>(null);
 
   const handleToggle = async (id: number, checked: boolean) => {
