@@ -12,7 +12,7 @@ export default async function login(prevState: any, formData: FormData) {
     cookieStore.set('adminSession', JSON.stringify(session), {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24,
+      maxAge: 60 * 60,
       path: '/',
     });
 
