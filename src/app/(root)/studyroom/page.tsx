@@ -4,8 +4,7 @@ import { getCrawler } from '@/lib/actions/crawler';
 import { getStudyrooms } from '@/lib/actions/studyroom';
 
 export default async function StudyroomDashBoard() {
-  const studyrooms = await getStudyrooms();
-  const crawler = await getCrawler();
+  const [studyrooms, crawler] = await Promise.all([getStudyrooms(), getCrawler()]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-8">

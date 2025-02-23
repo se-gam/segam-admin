@@ -51,7 +51,7 @@ export default function CrawlerInfo({ crawler }: { crawler: Crawler }) {
           <p className="text-lg font-medium">{isRunning ? '실행 중' : '중지됨'}</p>
         </div>
         <p className="text-sm text-gray-600">
-          - 마지막 실행: {new Date(lastFiredAt).toLocaleString()}
+          - 마지막 실행: {new Date(lastFiredAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })}
         </p>
         <p className="text-sm text-gray-600">- Cron Time 설정: {cronTime}</p>
 
