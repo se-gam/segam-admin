@@ -60,15 +60,15 @@ function AdminTable({ notices }: { notices: NoticeSummary[] }) {
               수정
             </button>
             <Popconfirm
-            title="공지사항을 삭제하시겠습니까?"
-            onConfirm={() => handleDelete(record.id)}
-            okText="예"
-            cancelText="아니오"
-          >
-            <button className="rounded-md bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">
-              삭제
-            </button>
-          </Popconfirm>
+              title="공지사항을 삭제하시겠습니까?"
+              onConfirm={() => handleDelete(record.id)}
+              okText="예"
+              cancelText="아니오"
+            >
+              <button className="rounded-md bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600">
+                삭제
+              </button>
+            </Popconfirm>
             <PopupButton noticeId={record.id} />
           </div>
         );

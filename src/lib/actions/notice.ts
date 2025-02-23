@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { fetchExtended, adminFetchExtended} from '@/utils/fetchExtended';
+import { fetchExtended, adminFetchExtended } from '@/utils/fetchExtended';
 import { Notice } from '@/lib/definitions';
 
 export async function getNotices() {

@@ -78,7 +78,7 @@ const adminFetchExtended = returnFetchJson({
     baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
-      'admin-api-key':`${encryptedKey}`,
+      'admin-api-key': `${encryptedKey}`,
     },
   }),
 });

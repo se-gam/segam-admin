@@ -8,7 +8,7 @@ export default function LoginPage() {
   const [, action] = useFormState(login, null);
 
   return (
-    <div className="items-center w-full flex min-h-screen justify-center bg-white">
+    <div className="flex min-h-screen w-full items-center justify-center bg-white">
       <div className="w-full lg:w-1/2">
         <div className="relative flex h-full items-center justify-center">
           <section className="w-full px-5 pb-10 text-gray-800 sm:w-4/6 sm:px-0 md:w-3/6 lg:w-4/6 xl:w-3/6">
