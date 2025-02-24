@@ -1,16 +1,11 @@
 import Link from 'next/link';
-import '@/app/globals.css';
+import Layout from '@/app/layout';
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-100">
-        <nav className="flex items-center justify-between px-8 py-2 shadow-md border-b border-gray-300 safe-area-top">
-          <h2 className="f16 font-bold text-theme_primary">Segam Admin</h2>
+    <Layout>
+      <nav className="flex items-center justify-between px-8 py-2 shadow-md border-b border-gray-300 safe-area-top">
+        <h2 className="f16 font-bold text-theme_primary">Segam Admin</h2>
           <div className="flex space-x-6">
             <Link 
               href="/notice"
@@ -25,9 +20,8 @@ export default function RootLayout({
               📚 스터디룸
             </Link>
           </div>
-        </nav>
-        <main>{children}</main>
-      </body>
-    </html>
+      </nav>
+      <main>{children}</main>
+    </Layout>
   );
 }
