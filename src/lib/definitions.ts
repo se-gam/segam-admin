@@ -24,3 +24,9 @@ export type Notice = {
 };
 
 export type NoticeSummary = Omit<Notice, 'content' | 'isPopup' | 'deletedAt'>;
+
+export type Crawler = {
+  isRunning: boolean;
+  cronTime: string;
+  lastFiredAt: string;
+};
