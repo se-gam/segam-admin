@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useTransition } from 'react';
-import { Button, Input, InputRef, message } from 'antd';
+import { Button, Input, InputRef, message, Popconfirm } from 'antd';
 import { activateCrawler, deactivateCrawler, changeCronTime } from '@/lib/actions/crawler';
 import { Crawler } from '@/lib/definitions';
 
@@ -55,15 +55,17 @@ export default function CrawlerInfo({ crawler }: { crawler: Crawler }) {
         </p>
         <p className="text-sm text-gray-600">- Cron Time 설정: {cronTime}</p>
 
-        <Button
-          type="primary"
-          danger={isRunning}
-          loading={isPending}
-          onClick={toggleCrawler}
-          className="mt-4 w-full"
+        <Popconfirm
+          title="주의"
+          description="활성화 여부를 변경하시겠습니까?"
+          onConfirm={toggleCrawler}
+          okText="예"
+          cancelText="아니오"
         >
-          {isRunning ? '비활성화' : '활성화'}
-        </Button>
+          <Button type="primary" danger={isRunning} loading={isPending} className="mt-4 w-full">
+            {isRunning ? '비활성화' : '활성화'}
+          </Button>
+        </Popconfirm>
       </div>
 
       <div className="flex flex-col justify-between rounded-lg bg-white p-6 shadow">
@@ -73,11 +75,23 @@ export default function CrawlerInfo({ crawler }: { crawler: Crawler }) {
           ref={cronTimeRef}
           placeholder="예: */5 * * * * *"
           className="mb-3"
-          onPressEnter={updateCronTime}
         />
-        <Button type="primary" loading={isPending} onClick={updateCronTime} className="w-full">
-          적용
-        </Button>
+        <Popconfirm
+          title="주의"
+          description={
+            <>
+              Cron Time을 변경하시겠습니까? <br />
+              정확한 값을 입력하셨는지 다시 한번 확인해주세요!!!
+            </>
+          }
+          onConfirm={updateCronTime}
+          okText="예"
+          cancelText="아니오"
+        >
+          <Button type="primary" loading={isPending} className="w-full">
+            적용
+          </Button>
+        </Popconfirm>
       </div>
     </div>
   );
