@@ -5,7 +5,7 @@ import { Button, Input } from 'antd';
 import { useFormState } from 'react-dom';
 
 export default function LoginPage() {
-  const [, action] = useFormState(login, null);
+  const [state, action] = useFormState(login, null);
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-white">
@@ -22,6 +22,7 @@ export default function LoginPage() {
                 <Button size="large" type="primary" htmlType="submit" className="mt-5 w-full">
                   로그인
                 </Button>
+                {state?.error && <div className="mt-5 text-red-500">{state.error}</div>}
               </form>
             </div>
           </section>
